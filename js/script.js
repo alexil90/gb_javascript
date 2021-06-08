@@ -3,21 +3,46 @@ const products = [
     { title: 'Socks', price: 50 },
     { title: 'Jacket', price: 350 },
     { title: 'Shoes', price: 250 },
+    {}
 ];
 
-const goodsListContainer = document.querySelector('.goods-list');
-
-const renderProduct = ({title = "Новый товар", price = 0, img = 'https://via.placeholder.com/200x150'}) => {
-    return `<div class="product-item">
-                <img src="${img}">
-                <h3>${title}</h3>
-                <p>${price}</p>
-                <button class="buy-btn">Купить</button>
-            </div>`
-};
-
-const renderProductList = (list) => {
-    document.querySelector('.products').innerHTML = list.map(item => renderProduct(item)).join('');
+class ProductItem {
+    constructor({
+        title = 'Новый товар',
+        price = 0,
+        img = 'https://via.placeholder.com/200x150'
+    }) {
+      this.title = title;
+      this.price = price;
+      this.img = img;
+    }
+    render() {
+        return `<div class="product-item">
+                    <img src="${this.img}">
+                    <h3>${this.title}</h3>
+                    <p>${this.price}</p>
+                    <button class="buy-btn">Купить</button>
+                </div>`
+    }
 }
 
-renderProductList(products);
+class ProductList {
+    constructor(products) {
+      this.products = [];
+      this._fetchProducts(products);
+    }
+    _fetchProducts (products) {
+        this.products = products;
+    }
+    render() {
+      let productListMarkup = '';
+      this.products.map(product => {
+        const productItem = new ProductItem(product);
+        productListMarkup += productItem.render();
+      });
+      document.querySelector('.products').innerHTML = productListMarkup;
+    }
+}
+
+const productList = new ProductList(products);
+productList.render();
