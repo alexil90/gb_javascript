@@ -75,3 +75,7 @@ img {
     border-color: #2f2a2d;
     color: #2f2a2d;
 }
+.total-price {
+    padding: 0 80px;
+    margin-bottom: 0;
+}

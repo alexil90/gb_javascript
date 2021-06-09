@@ -34,6 +34,16 @@ class ProductList {
     _fetchProducts (products) {
         this.products = products;
     }
+    //задание 2
+    countTotalPrice() {
+        let totalPrice = [];
+        this.products.map(product => {
+            if (product.price) {
+                totalPrice.push(product.price)
+            }
+        });
+        return `Сумма товаров: ${totalPrice.reduce((sum, productPrice) => sum + productPrice)}`
+    }
     render() {
       let productListMarkup = '';
       this.products.map(product => {
@@ -41,6 +51,7 @@ class ProductList {
         productListMarkup += productItem.render();
       });
       document.querySelector('.products').innerHTML = productListMarkup;
+      document.querySelector('.total-price').innerHTML = this.countTotalPrice();
     }
 }
 
