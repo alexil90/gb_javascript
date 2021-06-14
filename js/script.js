@@ -1,25 +1,19 @@
-const products = [
-    { title: 'Shirt', price: 150 },
-    { title: 'Socks', price: 50 },
-    { title: 'Jacket', price: 350 },
-    { title: 'Shoes', price: 250 },
-    {}
-];
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 class ProductItem {
     constructor({
-        title = 'Новый товар',
+        product_name = 'Новый товар',
         price = 0,
         img = 'https://via.placeholder.com/200x150'
     }) {
-      this.title = title;
+      this.product_name = product_name;
       this.price = price;
       this.img = img;
     }
     render() {
         return `<div class="product-item">
                     <img src="${this.img}">
-                    <h3>${this.title}</h3>
+                    <h3>${this.product_name}</h3>
                     <p>${this.price}</p>
                     <button class="buy-btn">Купить</button>
                 </div>`
@@ -27,22 +21,25 @@ class ProductItem {
 }
 
 class ProductList {
-    constructor(products) {
+    constructor() {
       this.products = [];
-      this._fetchProducts(products);
+      this._getProducts()
+            .then(data => {
+                this.products = [...data];
+                this.render()
+            });
     }
-    _fetchProducts (products) {
-        this.products = products;
+    _getProducts(){
+        return fetch(`${API}/catalogData.json`)
+            .then(result => result.json())
+            .catch(error => console.log(error));
     }
     //задание 2
     countTotalPrice() {
-        let totalPrice = [];
-        this.products.map(product => {
-            if (product.price) {
-                totalPrice.push(product.price)
-            }
-        });
-        return `Сумма товаров: ${totalPrice.reduce((sum, productPrice) => sum + productPrice)}`
+        const totalPrice = this.products.length !== 0 
+            ? this.products.reduce((sum, product) => sum + product.price, 0)
+            : ''
+        return `Сумма товаров: ${totalPrice}`
     }
     render() {
       let productListMarkup = '';
@@ -54,6 +51,46 @@ class ProductList {
       document.querySelector('.total-price').innerHTML = this.countTotalPrice();
     }
 }
+class CartItem {
+    constructor() {
+      
+    }
+    changeQuantity() {
 
-const productList = new ProductList(products);
+    }
+    render() {
+
+    }
+}
+
+class Cart {
+    constructor() {
+      
+    }
+    addCartItem() {
+
+    }
+    removeCartItem() {
+
+    }
+    countTotalPrice() {
+
+    }
+    render() {
+        const cartElem = document.createElement('div');
+        cartElem.classList.add('cart');
+        
+        document.querySelector('header').append(cartElem);
+    }
+}
+
+const productList = new ProductList();
 productList.render();
+
+const cart = new Cart();
+cart.render();
+
+const cartButton = document.querySelector('.btn-cart');
+cartButton.addEventListener('click', (e) => {
+    document.querySelector('.cart').classList.toggle('active');
+})

@@ -39,7 +39,7 @@ button{
     grid-template-columns: repeat(auto-fit, 200px);
     grid-template-rows: 1fr;
     padding: 40px 80px;
-    justify-content: space-between;
+    justify-content: start;
 }
 p {
     margin: 0 0 5px 0;
@@ -78,4 +78,17 @@ img {
 .total-price {
     padding: 0 80px;
     margin-bottom: 0;
+}
+.cart {
+    display: none;
+    background-color: antiquewhite;
+    width: 33%;
+    height: 20%;
+    position: absolute;
+    top: 5rem;
+    right: 2.5rem;
+    z-index: 999;
+}
+.cart.active {
+    display: block;
 }
