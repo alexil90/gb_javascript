@@ -9,10 +9,20 @@
 <body>
     <header>
         <div class="logo">E-shop</div>
-        <button class="btn-cart" type="button">Корзина</button>
+        <div class="cart">
+            <button class="btn-cart" type="button">Корзина</button>
+            <div class="cart-block invisible">
+                <div class="cart-items"></div>
+                <div class="cart-total">
+                    <b>Сумма товаров в корзине:</b>&nbsp;
+                    <span class="cart-sum"></span>
+                    
+                </div>
+                <button class="buy-btn">Перейти к оплате</button>
+            </div>
+        </div>
     </header>
     <main>
-        <h2 class="total-price">Сумма товаров: </h2>
         <div class="products"></div>
     </main>
     <script src="js/script.js"></script>
