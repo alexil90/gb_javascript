@@ -93,6 +93,7 @@ class Hamburger {
         this.topping = [];
         this.totalPrice = 0;
         this.totalCalories = 0;
+        this._render();
     }
     //назначение обработчиков событий полям ввода
     _assignEventHandlers(inputName) {
@@ -164,7 +165,7 @@ class Hamburger {
                 </div>`
     }
     //отрисовка страницы
-    render() {
+    _render() {
         //создает корневой контейнер
         const container = document.createElement('div');
         container.innerHTML = `<h2>Соберите бургер</h2>`;
@@ -187,4 +188,3 @@ class Hamburger {
 }
 
 const hamburger = new Hamburger(OPTIONS, OUTPUT);
-hamburger.render();
