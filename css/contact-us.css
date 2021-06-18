@@ -40,6 +40,13 @@ input:focus, textarea:focus {
     border-bottom: 2px solid #78788c
 }
 
+.is-error, .is-error:focus {
+    border-bottom: 2px solid #ff0033
+}
+.is-error::placeholder {
+    color: #ff0033;
+}
+
 p:before {
     content: attr(type);
     display: block;
@@ -63,4 +70,12 @@ button {
 button:hover {
     background: #78788c;
     color: #fff
+}
+.check-img {
+    display: inline-block;
+    height: 1rem;
+    padding: 0.5rem;
+}
+.check-img>img {
+    height: 100%;
 }
