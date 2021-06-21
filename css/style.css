@@ -85,9 +85,6 @@ img {
     justify-content: center;
 }
 
-.invisible{
-    display: none;
-}
 .cart-block:before{
     content: '';
     width: 0;
@@ -153,14 +150,18 @@ img {
 .right-block{
     text-align: right;
 }
-.btn-search {
-    background-color: transparent;
+.search-field {
     border: none;
+    box-sizing: border-box;
+    width: 200px;
+}
+.icon-search, .search-field {
+    margin: 0 -0.25rem;
+    padding: 10px;
+    background-color: transparent;
+    border-bottom: 2px solid #fafafa;
     color: #fafafa;
     font-size: 1.2em;
-    position: absolute;
-    bottom: 5px;
-    right: 0;
 }
 .search-form{
     position: relative;
@@ -169,13 +170,4 @@ img {
 }
 .search-field:focus{
     outline: none;
-}
-.search-field {
-    box-sizing: border-box;
-    width: 200px;
-    color: #fafafa;
-    padding: 10px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #fafafa;
 }
