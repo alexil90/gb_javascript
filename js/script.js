@@ -27,6 +27,18 @@ class List {
     calcSum(){
         return this.allProducts.reduce((accum, item) => accum += item.price * item.quantity, 0);
     }
+    filter(value){
+        const regexp = new RegExp(value, 'i');
+        this.filtered = this.allProducts.filter(product => regexp.test(product.product_name));
+        this.allProducts.forEach(el => {
+            const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
+            if(!this.filtered.includes(el)){
+                block.classList.add('invisible');
+            } else {
+                block.classList.remove('invisible');
+            }
+        })
+    }
     render(){
         const block = document.querySelector(this.container);
         for (let product of this.goods){
@@ -50,7 +62,10 @@ class ProductsList extends List{
                 this.cart.addProduct(e.target);
             }
         });
-        
+        document.querySelector('.search-form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.filter(document.querySelector('.search-field').value)
+        })
     }
 }
 
