@@ -171,3 +171,9 @@ img {
 .search-field:focus{
     outline: none;
 }
+.error {
+    color: #ff0033;
+    position: relative;
+    top: 2rem;
+    left: 5rem
+}

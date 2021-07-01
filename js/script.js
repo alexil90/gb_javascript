@@ -12,13 +12,13 @@ const app = new Vue({
         userSearch: '',
         showCart: false,
         cartItems: [],
-        cartTotal: 0
+        errorState: false
     },
     methods: {
         getJson(url) {
             return fetch(url)
                 .then(result => result.json())
-                .catch(error => console.log(error));
+                .catch(error => this.errorState = true);
         },
         getImage (res, url = 'http://via.placeholder.com/') {
             return url + res
@@ -46,15 +46,11 @@ const app = new Vue({
                                 break;
                         }
                     }
-                    this.calcCartTotal();
                 })
         },
         filter() {
             const regexp = new RegExp(this.userSearch, 'i');
             this.filtered = this.products.filter(product => regexp.test(product.product_name));
-        },
-        calcCartTotal() {
-            this.cartTotal = this.cartItems.reduce((accum, item) => accum += item.price * item.quantity, 0);
         }
     },
     mounted(){
