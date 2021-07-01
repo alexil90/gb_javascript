@@ -21,6 +21,7 @@
             </div>
         </header>
         <main>
+            <error v-if="errorState"></error>
             <products
                 :products="filtered"
                 :img="getImage('200x150')"
@@ -32,6 +33,7 @@
     <script src="js/components/Cart.js"></script>
     <script src="js/components/Catalog.js"></script>
     <script src="js/components/Search.js"></script>
+    <script src="js/components/Error.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

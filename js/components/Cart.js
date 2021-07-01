@@ -1,4 +1,7 @@
 Vue.component('cart', {
+    data() {
+        return { cartTotal: 0 }
+    },
     props: ['cartItems', 'img', 'showCart'],
     template: `
         <div class="cart-block" v-show="showCart">
@@ -13,7 +16,15 @@ Vue.component('cart', {
             </div>
             <cart-total></cart-total>
         </div>
-    `
+    `,
+    watch: {
+        cartItems: { 
+            deep: true,
+            handler() {
+                this.cartTotal = this.cartItems.reduce((accum, item) => accum += item.price * item.quantity, 0)
+            } 
+        }
+    }   
 });
 
 Vue.component('cart-item', {
@@ -40,7 +51,7 @@ Vue.component('cart-total', {
     template: `
         <div class="cart-total">
             <b>Сумма товаров в корзине:</b>&nbsp;
-            <span class="cart-sum">\${{$root.cartTotal}}</span>
+            <span class="cart-sum">\${{$parent.cartTotal}}</span>
         </div>
     `
 });
