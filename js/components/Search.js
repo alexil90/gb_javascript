@@ -1,4 +1,4 @@
-Vue.component('search', {
+const Search = {
     data() {
         return { userSearch: '' }
     },
@@ -14,4 +14,4 @@ Vue.component('search', {
             this.$root.filtered = this.$root.products.filter(product => regexp.test(product.product_name));
         }
     }
-});
+}

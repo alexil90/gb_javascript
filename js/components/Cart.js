@@ -1,33 +1,4 @@
-Vue.component('cart', {
-    data() {
-        return { cartTotal: 0 }
-    },
-    props: ['cartItems', 'img', 'showCart'],
-    template: `
-        <div class="cart-block" v-show="showCart">
-            <p v-if="!cartItems.length">Корзина пуста</p>
-            <div class="cart-items">
-                <cart-item 
-                    v-for="item of cartItems"
-                    :key="item.id_product"
-                    :img="img"
-                    :item="item"
-                ></cart-item>
-            </div>
-            <cart-total></cart-total>
-        </div>
-    `,
-    watch: {
-        cartItems: { 
-            deep: true,
-            handler() {
-                this.cartTotal = this.cartItems.reduce((accum, item) => accum += item.price * item.quantity, 0)
-            } 
-        }
-    }   
-});
-
-Vue.component('cart-item', {
+const CartItem = {
     props: ['img', 'item'],
     template: `
         <div class="cart-item">
@@ -45,13 +16,43 @@ Vue.component('cart-item', {
             </div>
         </div>
     `
-});
+}
 
-Vue.component('cart-total', {
+const CartTotal = {
     template: `
         <div class="cart-total">
             <b>Сумма товаров в корзине:</b>&nbsp;
             <span class="cart-sum">\${{$parent.cartTotal}}</span>
         </div>
     `
-});
+}
+
+const Cart = {
+    data() {
+        return { cartTotal: 0 }
+    },
+    props: ['cartItems', 'img', 'showCart'],
+    components: { CartItem, CartTotal },
+    template: `
+        <div class="cart-block" v-show="showCart">
+            <p v-if="!cartItems.length">Корзина пуста</p>
+            <div class="cart-items">
+                <CartItem 
+                    v-for="item of cartItems"
+                    :key="item.id_product"
+                    :img="img"
+                    :item="item"
+                ></CartItem>
+            </div>
+            <CartTotal></CartTotal>
+        </div>
+    `,
+    watch: {
+        cartItems: { 
+            deep: true,
+            handler() {
+                this.cartTotal = this.cartItems.reduce((accum, item) => accum += item.price * item.quantity, 0)
+            } 
+        }
+    }   
+}

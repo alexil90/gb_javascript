@@ -11,21 +11,21 @@
         <header>
             <div class="logo">E-shop</div>
             <div class="cart">
-                <search></search>
+                <Search></Search>
                 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart 
+                <Cart 
                     :cart-items="cartItems"
                     :img="getImage('50x100')"
                     :show-cart="showCart"
-                ></cart>
+                ></Cart>
             </div>
         </header>
         <main>
-            <error v-if="errorState"></error>
-            <products
+            <ErrorMsg v-if="errorState"></ErrorMsg>
+            <Products
                 :products="filtered"
                 :img="getImage('200x150')"
-            ></products>
+            ></Products>
         </main>
     </div>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>

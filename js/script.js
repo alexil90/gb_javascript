@@ -13,6 +13,7 @@ const app = new Vue({
         cartItems: [],
         errorState: false
     },
+    components: { Products, Cart, Search, ErrorMsg },
     methods: {
         getJson(url) {
             return fetch(url)
