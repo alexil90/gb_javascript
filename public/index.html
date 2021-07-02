@@ -10,20 +10,18 @@
     <div id="app">
         <header>
             <div class="logo">E-shop</div>
-            <div class="cart">
+            <div class="menu-right"> 
                 <Search></Search>
-                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <Cart 
-                    :cart-items="cartItems"
+                <Cart
+                    ref="cart"
                     :img="getImage('50x100')"
-                    :show-cart="showCart"
                 ></Cart>
             </div>
         </header>
         <main>
             <ErrorMsg v-if="errorState"></ErrorMsg>
             <Products
-                :products="filtered"
+                ref="catalog"
                 :img="getImage('200x150')"
             ></Products>
         </main>

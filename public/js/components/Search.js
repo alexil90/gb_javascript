@@ -11,7 +11,7 @@ const Search = {
     methods: {
         filter() {
             const regexp = new RegExp(this.userSearch, 'i');
-            this.$root.filtered = this.$root.products.filter(product => regexp.test(product.product_name));
+            this.$root.$refs.catalog.filtered = this.$root.$refs.catalog.products.filter(product => regexp.test(product.product_name));
         }
     }
 }
