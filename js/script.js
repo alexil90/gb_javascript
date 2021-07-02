@@ -9,7 +9,6 @@ const app = new Vue({
         },
         products: [],
         filtered: [],
-        userSearch: '',
         showCart: false,
         cartItems: [],
         errorState: false
@@ -47,10 +46,6 @@ const app = new Vue({
                         }
                     }
                 })
-        },
-        filter() {
-            const regexp = new RegExp(this.userSearch, 'i');
-            this.filtered = this.products.filter(product => regexp.test(product.product_name));
         }
     },
     mounted(){
