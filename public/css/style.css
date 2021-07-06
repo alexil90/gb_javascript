@@ -8,6 +8,10 @@ header{
     color: #fafafa;
     padding: 30px 80px;
 }
+.menu-right{
+    display: flex;
+    justify-content: space-between;
+}
 button:focus{
     outline: none;
 }
