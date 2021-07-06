@@ -1,8 +1,8 @@
 const Product = {
-    props: ['item', 'img'],
+    props: ['item'],
     template: `
        <div class="product-item">
-           <img :src="img" alt="Some img">
+           <img :src="item.imgProduct" alt="Some img">
            <div class="desc">
                <h3>{{item.product_name}}</h3>
                <p>{{item.price}}&#8381;</p>
@@ -19,7 +19,6 @@ const Products = {
             filtered: [],
         }
     },
-    props: ['img'],
     components: { Product },
     template: `
         <div class="products">
@@ -27,13 +26,12 @@ const Products = {
             <Product 
                 v-for="item of filtered" 
                 :key="item.id_product" 
-                :img="img"
                 :item="item"
             ></Product>
         </div>
     `,
     mounted(){
-        this.$root.getJson(`${API}/catalogData.json`)
+        this.$root.handleJson(`api/products`)
             .then(data => {
                 for(let el of data){
                     this.products.push(el);

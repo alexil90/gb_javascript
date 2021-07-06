@@ -19,7 +19,7 @@
             </div>
         </header>
         <main>
-            <ErrorMsg v-if="errorState"></ErrorMsg>
+            <Errormsg v-if="errorState"></Errormsg>
             <Products
                 ref="catalog"
                 :img="getImage('200x150')"
