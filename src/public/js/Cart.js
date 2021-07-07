@@ -27,7 +27,7 @@ const CartTotal = {
     `
 }
 
-const Cart = {
+export default {
     data() {
         return {
             showCart: false,

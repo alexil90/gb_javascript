@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="2fb3eccb0f45f7e44c3c.css">
+    <link rel="stylesheet" href="097e2f66a76acf24cde0.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script defer src="index.js"></script></head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="menu-right"> 
+                <Search></Search>
+                <Cart
+                    ref="cart"
+                ></Cart>
+            </div>
+        </header>
+        <main>
+            <Errormsg v-if="errorState"></Errormsg>
+            <Products
+                ref="catalog"
+            ></Products>
+        </main>
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+</body>
+</html>

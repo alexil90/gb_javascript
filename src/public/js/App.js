@@ -1,8 +1,11 @@
-const app = new Vue({
+import Cart from "./Cart"
+import Products from "./Products"
+import Search from "./Search"
+import Errormsg from "./Errormsg"
+
+export default {
     el: '#app',
-    data: {
-        errorState: false
-    },
+    data: { errorState: false },
     components: { Products, Cart, Search, Errormsg },
     methods: {
         handleJson(url, data, method) {
@@ -19,9 +22,6 @@ const app = new Vue({
                     :  fetch(url)
                         .then(result => result.json())
                         .catch(error => this.errorState = true)
-        },
-        getImage (res, url = 'http://via.placeholder.com/') {
-            return url + res
-        },
+        }
     }
-})
+}
