@@ -568,5 +568,15 @@
         "Product_name": "Ноутбук",
         "Action": "Removed from cart",
         "Time": "July 6th 2021, 12:02:35 pm"
+    },
+    {
+        "Product_name": "Ноутбук",
+        "Action": "Added to cart",
+        "Time": "July 7th 2021, 2:05:16 pm"
+    },
+    {
+        "Product_name": "Ноутбук",
+        "Action": "Removed from cart",
+        "Time": "July 7th 2021, 2:05:24 pm"
     }
 ]

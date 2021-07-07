@@ -1,11 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlagin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: "./src/public/index.js",
+  entry: {
+      main: ["@babel/polyfill", "./src/public/index.js"]
+  },
     output: {
-        path: path.join(__dirname, 'dist/public'),
-        filename: "index.js"
+      path: path.join(__dirname, 'dist/public'),
+      publicPath: "/",
+      filename: "[name].js"
     },
     target: 'web',
     module: {
@@ -38,6 +42,18 @@ module.exports = {
             template: 'src/public/index.html',
             filename: 'index.html',
             excludeChunks: ['server']
-        })
+        }),
+        new CopyPlugin([
+            {
+                from: 'src/public/img/cart',
+                to: 'img/cart/[name].[ext]',
+                toType: 'template'
+            },
+            {
+                from: 'src/public/img/products',
+                to: 'img/products/[name].[ext]',
+                toType: 'template'
+            }
+        ])
     ]
 };
