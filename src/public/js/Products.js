@@ -12,7 +12,7 @@ const Product = {
    `
 }
 
-const Products = {
+export default {
     data() {
         return {
             products: [],
